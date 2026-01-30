@@ -1,0 +1,57 @@
+---
+const steps = [
+  {
+    num: "01",
+    title: "Ghost Audit",
+    desc: "Kami diam-diam menganalisis website lama Anda atau kompetitor. Kami temukan celah 'uang hilang' (speed lambat, pixel bocor).",
+    icon: `<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>`
+  },
+  {
+    num: "02",
+    title: "Engineering",
+    desc: "Bukan sekadar desain. Kami bangun ulang dengan **kode murni (Hand-Coded)**. Tanpa 'Drag & Drop' yang berat. Hasilnya? Website super ringan & stabil.",
+    icon: `<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>`
+  },
+  {
+    num: "03",
+    title: "Conversion Ready",
+    desc: "Website launch dengan Load < 2 detik. Tracking Pixel siap merekam setiap klik WA. Siap untuk iklan FB/Google Ads.",
+    icon: `<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>`
+  }
+];
+---
+
+<section id="process" class="py-24 bg-white relative overflow-hidden">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Workflow</span>
+      <h2 class="text-3xl font-bold text-dark">Cara Kami Bekerja</h2>
+      <p class="text-gray-500 mt-4 max-w-xl mx-auto">
+        Tidak ada "magic". Yang ada hanya engineering yang solid dan disiplin data.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 relative">
+      <!-- Connecting Line (Desktop) -->
+      <div class="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-gray-100 -z-10"></div>
+
+      {steps.map((step) => (
+        <div class="relative bg-white pt-4 text-center group">
+          <div class="w-24 h-24 mx-auto bg-white border-4 border-blue-50 rounded-full flex items-center justify-center mb-6 relative z-10 group-hover:border-primary transition duration-500">
+            <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg shadow-blue-500/30">
+              <span set:html={step.icon} />
+            </div>
+            <div class="absolute -top-2 -right-2 w-8 h-8 bg-dark text-white rounded-full flex items-center justify-center font-bold text-sm border-2 border-white">
+              {step.num}
+            </div>
+          </div>
+          
+          <h3 class="text-xl font-bold text-dark mb-3">{step.title}</h3>
+          <p class="text-gray-500 leading-relaxed text-sm px-4">
+            {step.desc}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
