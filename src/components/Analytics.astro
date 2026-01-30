@@ -1,0 +1,29 @@
+---
+interface Props {
+  gtmId?: string;
+}
+
+const { gtmId = 'GTM-XXXXXX' } = Astro.props; // Default placeholder
+---
+
+<!-- Google Tag Manager (Partytown) -->
+<script type="text/partytown" src={`https://www.googletagmanager.com/gtm.js?id=${gtmId}`}></script>
+
+<script type="text/partytown">
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    'gtm.start': new Date().getTime(),
+    event: 'gtm.js'
+  });
+</script>
+<!-- End Google Tag Manager -->
+
+<!-- Utility Script for Dev Mode (Console Log) -->
+<script is:inline>
+  window.trackEvent = (eventName, data) => {
+    if (window.dataLayer) {
+      window.dataLayer.push({ event: eventName, ...data });
+    }
+    console.log('📊 [Analytics]', eventName, data);
+  }
+</script>

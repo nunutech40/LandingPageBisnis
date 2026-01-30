@@ -1,0 +1,51 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-dark text-white pt-20 pb-10 border-t border-gray-800">
+  <div class="container mx-auto px-6">
+    <div class="grid md:grid-cols-4 gap-12 mb-16">
+      
+      <!-- Brand -->
+      <div class="col-span-1 md:col-span-2">
+        <div class="text-2xl font-bold tracking-tighter text-white flex items-center gap-2 mb-4">
+          <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-black text-xl">
+            C
+          </div>
+          <span>Conversion<span class="text-primary">Engine</span></span>
+        </div>
+        <p class="text-gray-400 leading-relaxed max-w-sm">
+          Spesialis Landing Page High-Performance untuk bisnis yang serius mengejar profit, bukan sekadar eksistensi digital.
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h4 class="font-bold text-lg mb-6">Menu</h4>
+        <ul class="space-y-3 text-gray-400">
+          <li><a href="#features" class="hover:text-primary transition">Fitur Unggulan</a></li>
+          <li><a href="#calculator" class="hover:text-primary transition">Simulasi Biaya</a></li>
+          <li><a href="#pricing" class="hover:text-primary transition">Paket Harga</a></li>
+          <li><a href="#faq" class="hover:text-primary transition">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="font-bold text-lg mb-6">Hubungi Kami</h4>
+        <p class="text-gray-400 mb-2">WhatsApp: +62 878-3102-5157</p>
+        <p class="text-gray-400 mb-2">Email: hello@conversion-engine.com</p>
+        <p class="text-gray-400">Jakarta, Indonesia</p>
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+      <p>&copy; {currentYear} ConversionEngine Agency. All rights reserved.</p>
+      <div class="flex gap-6 mt-4 md:mt-0">
+        <a href="#" class="hover:text-white transition">Privacy Policy</a>
+        <a href="#" class="hover:text-white transition">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>

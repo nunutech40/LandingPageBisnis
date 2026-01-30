@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404: Halaman Tidak Ditemukan | ConversionEngine">
+  <main class="min-h-screen flex flex-col items-center justify-center text-center px-6">
+    <div class="mb-8 relative">
+      <div class="text-9xl font-black text-gray-100">404</div>
+      <div class="absolute inset-0 flex items-center justify-center">
+        <h1 class="text-3xl font-bold text-dark">Halaman Hilang?</h1>
+      </div>
+    </div>
+    
+    <p class="text-gray-500 max-w-md mb-8">
+      Sepertinya halaman yang Anda cari sudah dipindahkan atau tidak pernah ada. 
+      Jangan khawatir, jalan kembali ke homepage selalu terbuka.
+    </p>
+
+    <a 
+      href="/" 
+      class="px-8 py-3 bg-primary text-white font-bold rounded-xl shadow-lg hover:bg-blue-800 transition"
+    >
+      Kembali ke Homepage
+    </a>
+  </main>
+</Layout>

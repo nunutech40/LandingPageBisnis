@@ -98,6 +98,7 @@ const packages = [
 
           <a 
             href="#" 
+            onclick={`window.trackEvent('select_item', { item_name: '${pkg.name}', price: '${pkg.price}' }); return false;`}
             class={`block w-full py-4 text-center font-bold rounded-xl transition-all ${
               pkg.highlight 
                 ? 'bg-primary text-white hover:bg-blue-800 shadow-lg shadow-blue-500/30' 

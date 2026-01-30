@@ -7,11 +7,19 @@
       setTimeout(() => this.showTooltip = true, 3000); // Show nudge after 3s
     },
     openWA() {
-      // Rotator Logic (Simple Randomizer for MVP)
-      const csNumbers = ['6281234567890', '6281122334455']; // Ganti nomor CS di sini
+      // Track Event
+      window.trackEvent('contact_whatsapp', { source: 'sticky_button' });
+
+      // Rotator Logic
+      // Saat ini menggunakan nomor tunggal Anda. Jika punya CS lain, tambahkan ke array ini.
+      const csNumbers = ['6287831025157']; 
       const randomNum = csNumbers[Math.floor(Math.random() * csNumbers.length)];
       const message = encodeURIComponent('Halo, saya tertarik konsultasi jasa Landing Page High-Performance. Boleh diskusi?');
-      window.open(`https://wa.me/${randomNum}?text=${message}`, '_blank');
+      
+      // Delay slightly to allow event to fire (optional safe-guard)
+      setTimeout(() => {
+         window.open(`https://wa.me/${randomNum}?text=${message}`, '_blank');
+      }, 100);
     }
   }"
   class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2"

@@ -1,6 +1,9 @@
 ---
 import '../styles/global.css';
 import SchemaJSONLD from '../components/SchemaJSONLD.astro';
+import Analytics from '../components/Analytics.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
 
 interface Props {
 	title: string;
@@ -50,9 +53,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     />
 
     <!-- Partytown / Analytics placeholder -->
+    <Analytics gtmId="GTM-DEMO-123" />
     <slot name="head" />
 	</head>
 	<body class="antialiased scroll-smooth">
+    <Navbar />
 		<slot />
+    <Footer />
 	</body>
 </html>

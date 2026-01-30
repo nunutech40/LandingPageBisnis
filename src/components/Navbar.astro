@@ -1,0 +1,75 @@
+---
+const links = [
+  { name: "Fitur", href: "#features" },
+  { name: "Kalkulator", href: "#calculator" },
+  { name: "Harga", href: "#pricing" },
+  { name: "FAQ", href: "#faq" },
+];
+---
+
+<header 
+  class="fixed top-0 w-full z-50 transition-all duration-300"
+  x-data="{ scrolled: false, mobileOpen: false }"
+  @scroll.window="scrolled = (window.pageYOffset > 20)"
+  :class="scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'"
+>
+  <div class="container mx-auto px-6 flex justify-between items-center">
+    <!-- Logo -->
+    <a href="#" class="text-2xl font-bold tracking-tighter text-dark flex items-center gap-2">
+      <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-black text-xl">
+        C
+      </div>
+      <span>Conversion<span class="text-primary">Engine</span></span>
+    </a>
+
+    <!-- Desktop Menu -->
+    <nav class="hidden md:flex items-center gap-8">
+      {links.map((link) => (
+        <a 
+          href={link.href} 
+          class="text-sm font-medium text-gray-600 hover:text-primary transition"
+        >
+          {link.name}
+        </a>
+      ))}
+      <a 
+        href="#calculator" 
+        class="px-5 py-2.5 bg-dark text-white text-sm font-bold rounded-lg hover:bg-gray-800 transition shadow-lg shadow-gray-200"
+      >
+        Audit Gratis
+      </a>
+    </nav>
+
+    <!-- Mobile Button -->
+    <button 
+      class="md:hidden text-dark p-2"
+      @click="mobileOpen = !mobileOpen"
+    >
+      <svg x-show="!mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+      <svg x-show="mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div 
+    x-show="mobileOpen" 
+    x-transition
+    class="md:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 shadow-xl flex flex-col p-6 gap-4"
+  >
+    {links.map((link) => (
+      <a 
+        href={link.href} 
+        class="text-lg font-medium text-dark py-2 border-b border-gray-50"
+        @click="mobileOpen = false"
+      >
+        {link.name}
+      </a>
+    ))}
+    <a 
+      href="#calculator" 
+      class="w-full text-center px-5 py-3 bg-primary text-white font-bold rounded-lg mt-2"
+    >
+      Mulai Audit Gratis
+    </a>
+  </div>
+</header>

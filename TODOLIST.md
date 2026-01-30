@@ -11,8 +11,8 @@
 - [ ] **Design System & Layout**
     - [ ] Config Tailwind (`tailwind.config.mjs`) for Typography & Colors (Trust Blue)
     - [ ] Create `Layout.astro` (Base HTML structure with SEO meta slots)
-    - [ ] Create `Navbar.astro` (Mobile responsive)
-    - [ ] Create `Footer.astro`
+    - [x] Create `Navbar.astro` (Mobile responsive)
+    - [x] Create `Footer.astro`
 - [ ] **Key Components Development**
     - [x] `Hero.astro` (Value Prop: "Web < 2 Detik")
     - [x] `ServiceCard.astro` (3 tiers: Basic, Performance, Dominator)
@@ -39,9 +39,9 @@
     - [ ] Create `SchemaJSONLD.astro` component
     - [ ] Inject `LocalBusiness` data
     - [ ] Generate `sitemap.xml` & `robots.txt`
-- [ ] **Tracking Infrastructure**
-    - [ ] Setup GTM script injection (Partytown/Deferred)
-    - [ ] Create `analytics.js` utility for `dataLayer.push`
+- [x] **Tracking Infrastructure**
+    - [x] Setup GTM script injection (Partytown/Deferred)
+    - [x] Create `analytics.js` utility for `dataLayer.push`
     - [ ] Test Event: "Click WA" fires `generate_lead`
 
 ## 🚀 Phase 4: Launch & Manual Audit (MVP - Process)
