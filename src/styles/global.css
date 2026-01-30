@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand Colors: Trust Blue & Corporate Dark */
+  --color-primary: #1d4ed8; /* blue-700 */
+  --color-primary-hover: #1e40af; /* blue-800 */
+  --color-dark: #0f172a; /* slate-900 */
+  --color-light: #f8fafc; /* slate-50 */
+  --color-accent: #f59e0b; /* amber-500 */
+  
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    @apply bg-light text-dark;
+  }
+}

@@ -1,0 +1,58 @@
+---
+import '../styles/global.css';
+import SchemaJSONLD from '../components/SchemaJSONLD.astro';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { 
+  title, 
+  description = "Jasa Landing Page High-Performance dengan Garansi Load < 2 Detik. Tingkatkan konversi iklan Anda sekarang." 
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="id">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Schema: Local Business (Agency) -->
+    <SchemaJSONLD 
+      type="LocalBusiness"
+      data={{
+        "name": "ConversionEngine Agency",
+        "description": "Jasa Pembuatan Landing Page High Performance untuk Bisnis.",
+        "priceRange": "$$$",
+        "openingHours": "Mo-Fr 09:00-17:00",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Indonesia",
+          "addressCountry": "ID"
+        }
+      }}
+    />
+
+    <!-- Partytown / Analytics placeholder -->
+    <slot name="head" />
+	</head>
+	<body class="antialiased scroll-smooth">
+		<slot />
+	</body>
+</html>
