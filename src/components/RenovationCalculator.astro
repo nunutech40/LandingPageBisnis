@@ -1,0 +1,135 @@
+---
+---
+
+<div 
+  x-data="{
+    area: 36,
+    materialGrade: 'standard',
+    roomType: 'living',
+    
+    get pricePerMeter() {
+      const basePrices = {
+        living: 3500000,
+        kitchen: 5000000,
+        bathroom: 6500000
+      };
+      let price = basePrices[this.roomType] || 0;
+      
+      if (this.materialGrade === 'premium') price *= 1.4;
+      if (this.materialGrade === 'luxury') price *= 2.2;
+      
+      return price;
+    },
+    
+    get totalCost() {
+      return this.area * this.pricePerMeter;
+    },
+    
+    formatCurrency(value) {
+      return new Intl.NumberFormat('id-ID', {
+        style: 'currency',
+        currency: 'IDR',
+        maximumFractionDigits: 0
+      }).format(value);
+    }
+  }"
+  class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 max-w-2xl mx-auto my-12"
+>
+  <div class="text-center mb-8">
+    <h3 class="text-2xl font-bold text-dark mb-2">Simulasi Biaya Renovasi</h3>
+    <p class="text-gray-500 text-sm">Coba hitung estimasi awal proyek Anda dalam 10 detik.</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-8">
+    <!-- INPUT SECTION -->
+    <div class="space-y-6">
+      <!-- Room Type -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-2">Tipe Ruangan</label>
+        <div class="grid grid-cols-3 gap-2">
+          <button 
+            @click="roomType = 'living'"
+            :class="roomType === 'living' ? 'bg-primary text-white border-primary' : 'bg-gray-50 text-gray-600 border-gray-200 hover:border-primary'"
+            class="py-2 text-sm font-medium rounded-lg border transition"
+          >R. Tamu</button>
+          <button 
+            @click="roomType = 'kitchen'"
+            :class="roomType === 'kitchen' ? 'bg-primary text-white border-primary' : 'bg-gray-50 text-gray-600 border-gray-200 hover:border-primary'"
+            class="py-2 text-sm font-medium rounded-lg border transition"
+          >Dapur</button>
+          <button 
+            @click="roomType = 'bathroom'"
+            :class="roomType === 'bathroom' ? 'bg-primary text-white border-primary' : 'bg-gray-50 text-gray-600 border-gray-200 hover:border-primary'"
+            class="py-2 text-sm font-medium rounded-lg border transition"
+          >Km. Mandi</button>
+        </div>
+      </div>
+
+      <!-- Area Slider -->
+      <div>
+        <div class="flex justify-between items-center mb-2">
+          <label class="text-sm font-semibold text-gray-700">Luas Area (m²)</label>
+          <span class="text-primary font-bold bg-blue-50 px-2 py-1 rounded" x-text="area + ' m²'"></span>
+        </div>
+        <input 
+          type="range" 
+          x-model.number="area" 
+          min="6" 
+          max="200" 
+          step="1"
+          class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary"
+        >
+        <div class="flex justify-between text-xs text-gray-400 mt-1">
+          <span>6 m²</span>
+          <span>200 m²</span>
+        </div>
+      </div>
+
+      <!-- Material Grade -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-2">Kualitas Material</label>
+        <select x-model="materialGrade" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+          <option value="standard">Standard (Ekonomis)</option>
+          <option value="premium">Premium (Best Seller)</option>
+          <option value="luxury">Luxury (Sultan)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- OUTPUT SECTION -->
+    <div class="bg-dark rounded-xl p-6 text-white flex flex-col justify-between relative overflow-hidden">
+      <!-- Decor Blob -->
+      <div class="absolute top-0 right-0 w-32 h-32 bg-primary opacity-20 rounded-full blur-3xl -mr-10 -mt-10"></div>
+      
+      <div>
+        <p class="text-gray-400 text-sm font-medium uppercase tracking-wider">Estimasi Biaya</p>
+        <div class="mt-2 relative">
+          <h2 
+            class="text-4xl font-bold tracking-tight text-white mb-1"
+            x-text="formatCurrency(totalCost)"
+          >
+            Rp 0
+          </h2>
+          <p class="text-xs text-gray-400">*Belum termasuk furniture & elektronik</p>
+        </div>
+      </div>
+
+      <div class="mt-8 space-y-3">
+        <div class="flex justify-between text-sm py-2 border-b border-gray-700">
+          <span class="text-gray-400">Harga / m²</span>
+          <span class="font-medium" x-text="formatCurrency(pricePerMeter)"></span>
+        </div>
+        
+        <button class="w-full mt-4 py-3 bg-accent hover:bg-amber-400 text-dark font-bold rounded-lg transition transform active:scale-95 shadow-lg flex justify-center items-center gap-2">
+          <span>Konsultasi WA</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+          </svg>
+        </button>
+        <p class="text-[10px] text-center text-gray-500">
+          Dengan klik tombol ini, detail estimasi akan otomatis terkirim ke WhatsApp kami.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

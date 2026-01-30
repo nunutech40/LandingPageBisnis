@@ -14,11 +14,11 @@
     - [ ] Create `Navbar.astro` (Mobile responsive)
     - [ ] Create `Footer.astro`
 - [ ] **Key Components Development**
-    - [ ] `Hero.astro` (Value Prop: "Web < 2 Detik")
-    - [ ] `ServiceCard.astro` (3 tiers: Basic, Performance, Dominator)
-    - [ ] `StickyWA.astro` (The "Rotator" logic + Floating Button) - *High Priority*
-    - [ ] `PerformanceBadge.astro` (Show live stats: Size, Score) - *Proof of Work*
-    - [ ] `FAQ.astro` (Accordion style using Alpine.js)
+    - [x] `Hero.astro` (Value Prop: "Web < 2 Detik")
+    - [x] `ServiceCard.astro` (3 tiers: Basic, Performance, Dominator)
+    - [x] `StickyWA.astro` (The "Rotator" logic + Floating Button) - *High Priority*
+    - [x] `PerformanceBadge.astro` (Show live stats: Size, Score) - *Proof of Work*
+    - [x] `FAQ.astro` (Accordion style using Alpine.js)
 
 ## ⚡ Phase 2: The "Killer Features" (MVP - Wajib)
 *Goal: Prove we are "Engineers", not just designers.*

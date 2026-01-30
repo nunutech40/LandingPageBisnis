@@ -1,0 +1,120 @@
+---
+const packages = [
+  {
+    name: "Starter Landing",
+    price: "3.5 Jt",
+    desc: "Cukup untuk mulai beriklan dengan website yang layak.",
+    features: [
+      "Single Page (Max 5 Section)",
+      "Mobile Friendly Design",
+      "Copywriting Dasar",
+      "Connect WhatsApp",
+      "Free Hosting 1 Tahun",
+      "Standard Speed (2-3s load)"
+    ],
+    cta: "Pilih Starter",
+    highlight: false,
+    color: "border-gray-200"
+  },
+  {
+    name: "High Performance",
+    price: "7.5 Jt",
+    desc: "Standar industri untuk kontraktor yang serius beriklan.",
+    features: [
+      "**Speed Guarantee (< 1.5s)**",
+      "**Interactive Calculator**",
+      "**Premium Copywriting (Sales Psy)**",
+      "Advanced SEO Schema",
+      "Facebook Pixel / GTM Setup",
+      "3 Bulan Support Prioritas"
+    ],
+    cta: "Pilih Performance",
+    highlight: true,
+    color: "border-primary ring-4 ring-blue-50"
+  },
+  {
+    name: "Dominator",
+    price: "15 Jt",
+    desc: "Dominasi pasar dengan website kelas Enterprise.",
+    features: [
+      "Multi-Page (Home + Services + Blog)",
+      "**Ghost Audit Competitor**",
+      "Custom Javascript Interaction",
+      "A/B Testing Setup",
+      "CRM Integration (Hubspot/Zoho)",
+      "Lifetime Bug Warranty"
+    ],
+    cta: "Konsultasi Dominator",
+    highlight: false,
+    color: "border-gray-200"
+  }
+];
+---
+
+<section id="pricing" class="py-24 bg-gray-50 relative overflow-hidden">
+  <!-- Decorative Background -->
+  <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+  
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-4xl font-bold text-dark mb-4">Investasi yang Membayar Dirinya Sendiri</h2>
+      <p class="text-gray-600 text-lg">
+        Jangan bayar biaya website. Bayarlah untuk <span class="text-primary font-bold">Sales Generator</span>.
+        Pilih paket yang sesuai dengan target growth bisnis Anda.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {packages.map((pkg) => (
+        <div class={`relative bg-white rounded-2xl p-8 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border ${pkg.color} flex flex-col`}>
+          
+          {pkg.highlight && (
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent text-dark text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wide shadow-sm">
+              Most Popular
+            </div>
+          )}
+
+          <div class="mb-8">
+            <h3 class="text-xl font-bold text-gray-900">{pkg.name}</h3>
+            <p class="text-gray-500 text-sm mt-2 min-h-[40px]">{pkg.desc}</p>
+          </div>
+
+          <div class="mb-8 p-4 bg-gray-50 rounded-lg text-center">
+            <span class="text-gray-500 text-sm align-top">Rp</span>
+            <span class="text-4xl font-bold text-dark tracking-tight">{pkg.price}</span>
+            {pkg.price !== 'Hubungi Kami' && <span class="text-gray-400 text-xs">/ project</span>}
+          </div>
+
+          <ul class="space-y-4 mb-8 flex-1">
+            {pkg.features.map((feat) => (
+              <li class="flex items-start gap-3 text-sm text-gray-600">
+                <svg class={`w-5 h-5 flex-shrink-0 ${pkg.highlight ? 'text-green-500' : 'text-blue-500'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span set:html={feat.replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-900">$1</strong>')} />
+              </li>
+            ))}
+          </ul>
+
+          <a 
+            href="#" 
+            class={`block w-full py-4 text-center font-bold rounded-xl transition-all ${
+              pkg.highlight 
+                ? 'bg-primary text-white hover:bg-blue-800 shadow-lg shadow-blue-500/30' 
+                : 'bg-white border-2 border-gray-100 text-gray-700 hover:border-primary hover:text-primary'
+            }`}
+          >
+            {pkg.cta}
+          </a>
+        </div>
+      ))}
+    </div>
+    
+    <div class="mt-12 text-center">
+      <p class="text-gray-500 text-sm flex items-center justify-center gap-2">
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+        Semua paket termasuk Garansi Error 30 Hari & Setup Domain.
+      </p>
+    </div>
+  </div>
+</section>

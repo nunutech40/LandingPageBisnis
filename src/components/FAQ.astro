@@ -1,0 +1,57 @@
+---
+const faqs = [
+  {
+    q: "Apakah garansi speed < 2 detik itu bohongan?",
+    a: "Tidak. Kami berani garansi karena kami tidak menggunakan WordPress. Kami menggunakan teknologi static code (Astro) yang menghapus semua 'lemak' berlebih di website."
+  },
+  {
+    q: "Bisa untuk bisnis selain kontraktor?",
+    a: "Bisa banget. Semua bisnis jasa (Dokter, Pengacara, Katering) yang butuh lead masuk via WA sangat cocok dengan sistem ini."
+  },
+  {
+    q: "Apakah nanti saya bisa edit sendiri?",
+    a: "Untuk perubahan teks/gambar sederhana, bisa. Tapi untuk struktur layout, kami sarankan kontak tim kami agar performa web tetap terjaga 100%."
+  },
+  {
+    q: "Berapa lama pengerjaannya?",
+    a: "Untuk paket Starter & Performance rata-rata 5-7 hari kerja setelah materi lengkap. Paket Dominator butuh 14 hari."
+  }
+];
+---
+
+<section id="faq" class="py-20 bg-white">
+  <div class="container mx-auto px-6 max-w-3xl">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-dark mb-4">Pertanyaan yang Sering Muncul</h2>
+      <p class="text-gray-500">Masih ragu? Cek detailnya di sini.</p>
+    </div>
+
+    <div class="space-y-4" x-data="{ selected: null }">
+      {faqs.map((faq, index) => (
+        <div class="border border-gray-100 rounded-xl overflow-hidden shadow-sm bg-gray-50">
+          <button 
+            @click={`selected !== ${index} ? selected = ${index} : selected = null`}
+            class="flex justify-between items-center w-full p-5 text-left bg-white hover:bg-gray-50 transition"
+          >
+            <span class="font-bold text-gray-800">{faq.q}</span>
+            <svg 
+              class="w-5 h-5 text-gray-400 transform transition-transform duration-200"
+              :class={`selected === ${index} ? 'rotate-180' : ''`}
+              fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          
+          <div 
+            x-show={`selected === ${index}`}
+            x-collapse
+            class="p-5 pt-0 text-gray-600 bg-white leading-relaxed"
+          >
+            {faq.a}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
